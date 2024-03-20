@@ -13,11 +13,11 @@ app = Flask(__name__)
 
 # Connect to local host MongoDB
 
-client = MongoClient('mongodb://localhost:27017/')
-db= client.vehicle
+# client = MongoClient('mongodb://localhost:27017/')
+# db= client.vehicle
 
-# client = MongoClient("mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
-# db = client['vehicle_database']
+client = MongoClient("mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
+db = client['vehicle_database']
 
 vehicles_collection = db['vehicle']  # collection name
 history_collection = db['history']  # collection name
