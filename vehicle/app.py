@@ -16,13 +16,11 @@ app = Flask(__name__)
 # client = MongoClient('mongodb://localhost:27017/')
 # db= client.vehicle
 
-client = MongoClient(
-    "mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
+client = MongoClient("mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
 db = client['vehicle_database']
 
-vehicles_collection = db['vehicle']  # collection name
-history_collection = db['history']  # collection name
-
+vehicles_collection = db['vehicle']  #collection name   
+history_collection = db['history'] #collection name
 
 def load_vehicle_database():
 
@@ -39,7 +37,6 @@ def load_vehicle_database():
 
     print("Vehicle database loaded successfully.")
     return database
-
 
 vehicle_database = load_vehicle_database()
 
@@ -59,29 +56,18 @@ vehicle_database = load_vehicle_database()
 recognized_plates = []
 
 # Load the pre-trained license plate detection cascade
-plate_cascade = cv2.CascadeClassifier(
-    cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml')
+plate_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_russian_plate_number.xml')
 
-
-# Path to Tesseract OCR executable (update this based on OS)
-
-# for Windows :-
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-# For Ubuntu :-
+# Path to Tesseract OCR executable
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
-
 # Function to perform OCR on an image region
-
 def perform_ocr(img):
     custom_config = r'--oem 3 --psm 6'  # OCR engine mode and page segmentation mode
     plate_number = pytesseract.image_to_string(img, config=custom_config)
     return plate_number.strip()
 
 # Function to process the video stream
-
-
 def process_video():
     cap = cv2.VideoCapture(0)
 
@@ -94,16 +80,14 @@ def process_video():
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # Detect license plates in the frame
-        plates = plate_cascade.detectMultiScale(
-            gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        plates = plate_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
         for (x, y, w, h) in plates:
             # Crop the region of interest (ROI) containing the license plate
             plate_roi = frame[y:y + h, x:x + w]
 
             # Perform OCR on the license plate region
-            pil_image = Image.fromarray(
-                cv2.cvtColor(plate_roi, cv2.COLOR_BGR2RGB))
+            pil_image = Image.fromarray(cv2.cvtColor(plate_roi, cv2.COLOR_BGR2RGB))
             plate_number = perform_ocr(pil_image)
 
             # Match the plate number with the database
@@ -116,6 +100,7 @@ def process_video():
                     # timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                     timestamp = datetime.now()
 
+            
                     recognized_plates.append({
                         "plate_number": plate_number,
                         "owner_name": vehicle_info['owner_name'],
@@ -136,10 +121,8 @@ def process_video():
                     })
 
                 # Display the vehicle information on the frame including owner name
-                info_text = f"Owner: {vehicle_info['owner_name']}, Make: {
-                    vehicle_info['make']}, Model: {vehicle_info['model']}, Color: {vehicle_info['color']}"
-                cv2.putText(frame, info_text, (x, y - 10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                info_text = f"Owner: {vehicle_info['owner_name']}, Make: {vehicle_info['make']}, Model: {vehicle_info['model']}, Color: {vehicle_info['color']}"
+                cv2.putText(frame, info_text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             # Display the original frame with the license plate highlighted
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
@@ -155,15 +138,12 @@ def process_video():
     pass
 
 # Function to run the video processing in a separate thread
-
-
 def run_video_processing():
     with app.app_context():
         app.video_thread = threading.Thread(target=process_video)
         app.video_thread.start()
     # Your existing code for running video processing
     pass
-
 
 def get_utc_now():
     return datetime.now(timezone.utc)
@@ -175,7 +155,7 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-# login function
+#login function
 app.secret_key = 'admin'  # Add a secret key for session management
 
 # Define admin credentials
@@ -183,21 +163,18 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = 'admin'
 
 # Add a login route
-
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
-            # Set session variable indicating user is logged in
-            session['logged_in'] = True
+            session['logged_in'] = True  # Set session variable indicating user is logged in
             return redirect(url_for('index'))  # Redirect to index.html
         else:
             return render_template('login.html', error=True)
     else:
         return render_template('login.html', error=False)
-
 
 @app.route('/logout')
 def logout():
@@ -209,8 +186,7 @@ def logout():
 def add_vehicle():
 
     if 'logged_in' not in session:
-        # Redirect to login page if not logged in
-        return redirect(url_for('login'))
+        return redirect(url_for('login'))  # Redirect to login page if not logged in
 
     plate_number = request.form['plate_number']
     owner_name = request.form['owner_name']
@@ -219,7 +195,7 @@ def add_vehicle():
     color = request.form['color']
 
     # Insert the new vehicle information into the MongoDB database
-
+    
     vehicles_collection.insert_one({
         "plate_number": plate_number,
         "owner_name": owner_name,
@@ -228,6 +204,7 @@ def add_vehicle():
         "color": color
     })
     return redirect(url_for('index'))
+    # return redirect(url_for('add_vehicle'))
 
 
 @app.route('/recognized_plates')
@@ -237,21 +214,47 @@ def recognized_plates_page():
 
 @app.route('/index')
 def index():
-
     try:
         # Calculate the timestamp for 24 hours ago
+        
         past_24_hours = datetime.now() - timedelta(hours=24)
-
+        
         # Query the history collection for documents within the past 24 hours
         data = history_collection.find({"timestamp": {"$gte": past_24_hours}})
-
+        
         return render_template('index.html', data=data)
+        # return render_template('index.html', data=database)
+    
     except Exception as e:
-        app.logger.error(
-            f"An error occurred while fetching data from the database: {e}")
+        app.logger.error(f"An error occurred while fetching data from the database: {e}")
         return "An error occurred while fetching data from the database. Please check the logs for more information."
+    
+
+@app.route('/records')
+def records():
+
+    try:
+
+        database = {}
+        records_collection = db['vehicle']
+        database = records_collection.find()
+
+        # Logging successful fetch
+        app.logger.info("Records fetched successfully")
+
+        # Returning the database for rendering in the template
+        return render_template('records.html', rec=database)
+
+    except Exception as e:
+        app.logger.error(f"An error occurred while fetching records from the database: {e}")
+        return "An error occurred while fetching records from the database. Please check the logs for more information."
+
+
+
 
 
 if __name__ == '__main__':
     run_video_processing()
     app.run(debug=True)
+
+
