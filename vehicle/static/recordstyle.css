@@ -1,0 +1,66 @@
+.back-button {
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+
+    display: block;
+    margin-top: 20px;
+    margin-left: 45%;
+    margin-right: 45%;
+    text-align: center;
+    background-image: linear-gradient(to right, #007bff, #00c6ff);
+}
+
+.back-button:hover {
+    background-color: #023b78;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("/static/car.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+    margin: 0;
+    padding: 0
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+    border-spacing: 20px 0;
+    border: 1px white solid;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+th,
+td {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+
+}
+th{
+    font-size: 25px;
+}
+td{
+    font-size: 20px;
+}

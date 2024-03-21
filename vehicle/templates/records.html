@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All Vehicle Records</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recordstyle.css') }}">
+
+</head>
+<body>
+    <h1>All Vehicle Records</h1>
+    
+    <!-- <table border="1"  cellpadding="10"> -->
+    <table>
+        <thead>
+            <tr>
+                <th>Plate Number</th>
+                <th>Owner Name</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in rec %}
+            <tr>
+                <td>{{ record.plate_number }}</td>
+                <td>{{ record.owner_name }}</td>
+                <td>{{ record.make }}</td>
+                <td>{{ record.model }}</td>
+                <td>{{ record.color }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="http://127.0.0.1:5000/index#" class="back-button">Back</a>
+</body>
+</html>

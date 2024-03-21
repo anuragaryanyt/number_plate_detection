@@ -96,7 +96,7 @@ h2 {
 .yesterday{
     color: white;
     text-align: left;
-    margin-left: 140px;
+    margin-left: 270px;
 }
 
 .vehicle{
@@ -200,4 +200,30 @@ input[type="reset"]:hover {
     text-align: center;
     margin-top: 20px;
     font-size: 18px;
+}
+
+table,
+th,
+td {
+    color: white;
+    text-align: center;
+    /* margin-left: auto; */
+    margin-right: auto;
+    padding: 0 10px;
+    border-spacing: 20px 0;
+    border: 1px white solid;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th,
+td {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+
+}
+th{
+    font-size: 20px;
 }
