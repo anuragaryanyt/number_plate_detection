@@ -13,11 +13,11 @@ app = Flask(__name__)
 
 # Connect to local host MongoDB
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client.vehicle
+# client = MongoClient('mongodb://localhost:27017/')
+# db = client.vehicle
 
-# client = MongoClient("mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
-# db = client['vehicle_database']
+client = MongoClient("mongodb+srv://vehicle:1234@atlascluster.uczqi01.mongodb.net/")
+db = client['vehicle_database']
 
 vehicles_collection = db['vehicle']  # collection name
 history_collection = db['history']  # collection name
@@ -128,8 +128,8 @@ def process_video():
                     })
 
                 # Display the vehicle information on the frame including owner name
-                info_text = f"Owner: {vehicle_info['owner_name']}, Make: {
-                    vehicle_info['make']}, Model: {vehicle_info['model']}, Color: {vehicle_info['color']}"
+                info_text = f"Owner: {vehicle_info['owner_name']}, Make: {vehicle_info['make']}, Model: {vehicle_info['model']}, Color: {vehicle_info['color']}"
+
                 cv2.putText(frame, info_text, (x, y - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
