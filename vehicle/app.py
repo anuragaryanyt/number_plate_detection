@@ -206,7 +206,6 @@ def add_vehicle():
     return redirect(url_for('index'))
     # return redirect(url_for('add_vehicle'))
 
-
 @app.route('/recognized_plates')
 def recognized_plates_page():
     return render_template('recognized_plates.html', recognized_plates=recognized_plates)
@@ -215,8 +214,7 @@ def recognized_plates_page():
 @app.route('/index')
 def index():
     try:
-        # Calculate the timestamp for 24 hours ago
-        
+        # Calculate the timestamp for 24 hours ago   
         past_24_hours = datetime.now() - timedelta(hours=24)
         
         # Query the history collection for documents within the past 24 hours
@@ -234,7 +232,6 @@ def index():
 def records():
 
     try:
-
         database = {}
         records_collection = db['vehicle']
         database = records_collection.find()
@@ -248,9 +245,6 @@ def records():
     except Exception as e:
         app.logger.error(f"An error occurred while fetching records from the database: {e}")
         return "An error occurred while fetching records from the database. Please check the logs for more information."
-
-
-
 
 
 if __name__ == '__main__':

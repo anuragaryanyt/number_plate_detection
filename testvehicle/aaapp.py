@@ -156,7 +156,6 @@ def run_video_processing():
     # Your existing code for running video processing
     pass
 
-
 def get_utc_now():
     return datetime.now(timezone.utc)
 
