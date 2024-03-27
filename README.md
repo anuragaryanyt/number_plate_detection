@@ -6,16 +6,20 @@ Utilizing Machine Learning (ML) algorithms and OpenCV, our Vehicle Number Plate 
 
 ### Scanning a number plate
 
-![Screenshot of the web page scanning number plate](https://raw.githubusercontent.com/anuragaryanyt/number_plate_detection/main/ss/Screenshot%20from%202024-03-18%2002-31-24-1.png)
+![Screenshot of the web page scanning number plate](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/Screenshot%20from%202024-03-28%2001-22-04.png?raw=true)
 
 ### Scanned image result
 
-![Ss of scanned result](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/WhatsApp%20Image%202024-03-15%20at%2020.04.51_9e686fed.jpg?raw=true)
+![Ss of scanned result](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/Screenshot%20from%202024-03-28%2001-24-27.png?raw=true)
 
 ### Adding new vehicle details
 
-![ss of new vehicle](https://raw.githubusercontent.com/anuragaryanyt/number_plate_detection/main/ss/Screenshot%20from%202024-03-18%2002-31-39.png)
+![ss of new vehicle](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/Screenshot%20from%202024-03-28%2001-24-06.png?raw=true)
 
 ### History of scanned vehicle's data (24 hours)
 
-![ss of history](https://raw.githubusercontent.com/anuragaryanyt/number_plate_detection/main/ss/Screenshot%20from%202024-03-18%2002-31-45.png)
+![ss of history](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/Screenshot%20from%202024-03-28%2001-24-13.png?raw=true)
+
+### All Vehicle Records
+
+![ss of all vehicle records](https://github.com/anuragaryanyt/number_plate_detection/blob/main/ss/Screenshot%20from%202024-03-28%2001-24-18.png?raw=true)
