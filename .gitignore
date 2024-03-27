@@ -3,4 +3,4 @@
 .tmp.driveupload
 desktop.ini
 myenv/
-.menv
+.venv/
