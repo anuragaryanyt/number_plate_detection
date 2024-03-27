@@ -2,3 +2,5 @@
 .tmp.drivedownload
 .tmp.driveupload
 desktop.ini
+myenv/
+.menv
