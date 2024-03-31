@@ -69,7 +69,8 @@ def perform_ocr(img):
 
 # Function to process the video stream
 def process_video():
-    cap = cv2.VideoCapture(0)
+    # cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(-1)
 
     while True:
         ret, frame = cap.read()
