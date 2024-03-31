@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recognizedstyle.css') }}">
+    <title>Recognized Plates</title>
+    <style>
+        
+    </style>
+
+</head>
+
+<body>
+    <h1>Recognized Plates</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Plate Number</th>
+                <th>Owner Name</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Time Stamp</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for plate in recognized_plates %}
+            <tr>
+                <td>{{ plate.plate_number }}</td>
+                <td>{{ plate.owner_name }}</td>
+                <td>{{ plate.make }}</td>
+                <td>{{ plate.model }}</td>
+                <td>{{ plate.color }}</td>
+                <td>{{ plate.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

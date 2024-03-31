@@ -1,0 +1,7 @@
+Flask
+Gunicorn
+opencv-python
+pytesseract
+requests
+pymongo
+Pillow
