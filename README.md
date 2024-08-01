@@ -1,5 +1,5 @@
 # Number plate detection system
-(In development)
+
 
 https://aryan-numberplatedetection.onrender.com/
 
