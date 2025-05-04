@@ -192,8 +192,7 @@ def process_video():
 ```
 <br>
 
-![Screenshot from 2024-03-28 01-22-04](https://github.com/user-attachments/assets/39663a93-9adc-4eaa-b553-183169265322)
-
+![videoprocessing](https://github.com/user-attachments/assets/c957e24e-cffe-47b2-b390-227a00af3faa)
 
 
 *   Captures video frames and converts them to grayscale.
@@ -252,8 +251,7 @@ def add_vehicle():
     return redirect(url_for('index'))
 ```
 
-![Screenshot from 2024-03-28 01-24-06](https://github.com/user-attachments/assets/4aa25c86-3103-49c9-8f8e-69acc45f5bd7)
-
+![addnew](https://github.com/user-attachments/assets/d3b4bd92-a700-49bb-8d62-945bcc12770d)
 
 
 2\. **Recognized Plates Route:**
@@ -264,7 +262,7 @@ def recognized_plates_page():
     return render_template('recognized_plates.html', recognized_plates=recognized_plates)
 ```
 
-![Screenshot from 2024-03-28 01-24-27](https://github.com/user-attachments/assets/1a510c7b-d882-44e2-b127-7b16c9d981e3)
+![recognizedplate](https://github.com/user-attachments/assets/b079c631-3a64-4248-bbc7-35b6d7fe74a1)
 
 
 
@@ -306,7 +304,8 @@ def records():
 
 The `index` route displays recognized plates within the past 24 hours, while the `records` route displays all vehicle records.
 
-![Screenshot from 2024-03-28 01-24-13](https://github.com/user-attachments/assets/1bd4596e-5f85-4659-8a0d-8a795820b5af)
+
+![history](https://github.com/user-attachments/assets/2daefbfd-86e5-4fc8-b123-744426da1b33)
 
 
 
