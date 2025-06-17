@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +38,9 @@
             <div id="scannerSection" style="display: none;">
                 <h2 class="scan">Scan</h2>
                 <div class="video">
-                    <img src="{{ url_for('video_feed') }}" alt="License Plate Scanner">
+                    <!-- <img src="{{ url_for('video_feed') }}" alt="License Plate Scanner"> -->
+
+                    <video id="cameraFeed" width="640" height="480" autoplay></video>
                 </div>
 
                 <br><br>
@@ -151,7 +152,19 @@
             recordSection.style.display = (recordSection.style.display === 'none') ? 'block' : 'none';
             // fetchRecords();
         });
-        
+
+        // Access user's camera on the browser
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                const video = document.getElementById('cameraFeed');
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.error("Camera access denied or unavailable: ", err);
+                alert("Camera access was denied or is not supported in this browser.");
+            });
+
+
     </script>
 
 

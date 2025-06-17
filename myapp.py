@@ -11,10 +11,10 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-@app.after_request
-def allow_camera(resp):
-    resp.headers['Permissions-Policy'] = 'camera=(self)'
-    return resp
+# @app.after_request
+# def allow_camera(resp):
+#     resp.headers['Permissions-Policy'] = 'camera=(self)'
+#     return resp
 
 # Connect to local host MongoDB
 
