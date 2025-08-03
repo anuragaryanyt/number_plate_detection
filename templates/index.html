@@ -38,16 +38,11 @@
             <div id="scannerSection" style="display: none;">
                 <h2 class="scan">Scan</h2>
                 <div class="video">
-                    <!-- <img src="{{ url_for('video_feed') }}" alt="License Plate Scanner"> -->
-
                     <img id="cameraFeed" src="{{ url_for('video_feed') }}" width="640" height="480" alt="License Plate Scanner">
                 </div>
-
                 <br><br>
                 <div>
-                    <a href="/recognized_plates" target="_blank">Click here to view recognized
-                        plates</a>
-
+                    <a href="/recognized_plates" target="_blank">Click here to view recognized plates</a>
                 </div>
             </div>
 
@@ -135,7 +130,10 @@
 
         // Call permission request when scanner is opened
         document.getElementById('openScannerLink').addEventListener('click', function () {
-            requestCameraPermission();
+            document.getElementById('scannerSection').style.display = 'block';
+            document.getElementById('addVehicleSection').style.display = 'none';
+            document.getElementById('yesterdaysDataSection').style.display = 'none';
+            // Hide other sections if needed
         });
 
 
