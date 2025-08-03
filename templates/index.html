@@ -117,6 +117,26 @@
     </section>
 
     <script>
+        // Camera permission request
+        function requestCameraPermission() {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function(stream) {
+                        // Permission granted, you can use the camera stream if needed
+                        stream.getTracks().forEach(track => track.stop()); // Stop stream since Flask handles video
+                    })
+                    .catch(function(err) {
+                        alert("Camera access denied. Please allow camera permission for scanning.");
+                    });
+            } else {
+                alert("Camera API not supported in this browser.");
+            }
+        }
+
+        // Call permission request when scanner is opened
+        document.getElementById('openScannerLink').addEventListener('click', function () {
+            requestCameraPermission();
+        });
 
 
 
